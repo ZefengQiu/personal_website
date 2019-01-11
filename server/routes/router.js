@@ -4,17 +4,21 @@ const router = express.Router();
 const speakersRoutes = require('./speakers/speaker');
 const landscapesRoutes = require('./landscapes/landscape');
 const urbansRoutes = require('./urbans/urban');
+const portraitsRoutes = require('./portraits/portraits');
 
 module.exports = () => {
-  router.get('/', function(req, res) {
-      return res.render('index', {
-          page: 'Home',
-      });
-  });
+    router.get('/', function(req, res) {
+        return res.render('index', {
+            page: 'Home',
+        });
+     });
 
-  router.use('/landscapes', landscapesRoutes());
-  router.use('/speakers', speakersRoutes());
-  router.use('/urbans', urbansRoutes());
+    //this is an example routes from sample projec
+    router.use('/speakers', speakersRoutes());
 
-  return router;
+    router.use('/landscapes', landscapesRoutes());
+    router.use('/portraits', portraitsRoutes());
+    router.use('/urbans', urbansRoutes());
+
+    return router;
 };
